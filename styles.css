@@ -58,3 +58,18 @@ body {
 .popup.active {
   display: block;
 }
+
+
+.chat-input button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+/* Estilo para o botão de limpar chat */
+#clear-button {
+  padding: 5px 10px;
+  background-color: #FFCCCC;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

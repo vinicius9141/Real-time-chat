@@ -73,3 +73,13 @@ database.ref('messages').on('child_added', function (snapshot) {
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 });
+
+const clearButton = document.getElementById('clear-button');
+
+// Função para limpar o chat
+function clearChat() {
+    chatMessages.innerHTML = '';
+}
+
+// Evento ao clicar no botão limpar chat
+clearButton.addEventListener('click', clearChat);
