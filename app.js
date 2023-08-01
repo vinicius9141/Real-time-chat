@@ -11,25 +11,28 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// Referência ao banco de dados do Firebase
 const database = firebase.database();
 
-
+// Referências aos elementos da página
 const nameInput = document.getElementById('name-input');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatMessages = document.getElementById('chat-messages');
+const clearButton = document.getElementById('clear-button');
 const popup = document.getElementById('popup');
+const notificationSound = document.getElementById('notification-sound');
 
-
+// Função para exibir o popup
 function showPopup(message) {
     popup.textContent = message;
     popup.classList.add('active');
     setTimeout(() => {
         popup.classList.remove('active');
-    }, 3000); 
+    }, 3000); // Exibir o popup por 3 segundos
 }
 
-
+// Função para enviar mensagem
 function sendMessage() {
     const name = nameInput.value.trim();
     const message = messageInput.value.trim();
@@ -44,41 +47,47 @@ function sendMessage() {
     } else {
         showPopup('Por favor, informe seu nome e digite uma mensagem antes de enviar.');
     }
+
+    // Tocar o som de notificação
+    notificationSound.play();
 }
 
+// Função para limpar o chat
+function clearChat() {
+    chatMessages.innerHTML = '';
+}
 
+// Evento ao clicar no botão enviar
 sendButton.addEventListener('click', sendMessage);
 
-
+// Evento ao pressionar Enter no campo de input de mensagem
 messageInput.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         sendMessage();
     }
 });
 
+// Evento ao clicar no botão limpar chat
+clearButton.addEventListener('click', clearChat);
 
+// Monitorando alterações no banco de dados do Firebase
 database.ref('messages').on('child_added', function (snapshot) {
     const messageData = snapshot.val();
     const messageElement = document.createElement('div');
     
-  
+    // Verifica se a mensagem foi enviada pelo usuário atual
     if (messageData.name === nameInput.value.trim()) {
-        messageElement.classList.add('user-message'); 
+        messageElement.classList.add('user-message'); // Adiciona a classe para alinhar à direita
     } else {
-        messageElement.classList.add('other-message'); 
+        messageElement.classList.add('other-message'); // Adiciona a classe para alinhar à esquerda
     }
     
     messageElement.innerHTML = `<strong>${messageData.name}:</strong> ${messageData.message}`;
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Tocar o som de notificação apenas se a mensagem não for enviada pelo usuário atual
+    if (messageData.name !== nameInput.value.trim()) {
+        notificationSound.play();
+    }
 });
-
-const clearButton = document.getElementById('clear-button');
-
-
-function clearChat() {
-    chatMessages.innerHTML = '';
-}
-
-
-clearButton.addEventListener('click', clearChat);

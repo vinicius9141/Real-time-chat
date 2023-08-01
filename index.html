@@ -13,13 +13,17 @@
       <input type="text" id="name-input" placeholder="Seu nome">
       <input type="text" id="message-input" placeholder="Digite sua mensagem">
       <button id="send-button">Enviar</button>
-      <!-- Novo botão para limpar o chat -->
       <button id="clear-button">Limpar Chat</button>
     </div>
   </div>
 
   <!-- Popup para sinalizar que o nome não foi preenchido -->
   <div id="popup" class="popup">Por favor, informe seu nome antes de enviar a mensagem.</div>
+
+  <!-- Elemento de áudio para notificação -->
+  <audio id="notification-sound">
+    <source src="notification.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
