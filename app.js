@@ -32,9 +32,10 @@ function sendMessage() {
             message: message
         });
         messageInput.value = '';
+    } else {
+        alert('Por favor, informe seu nome e digite uma mensagem antes de enviar.');
     }
 }
-
 // Evento ao clicar no botão enviar
 sendButton.addEventListener('click', sendMessage);
 
