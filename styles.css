@@ -17,6 +17,9 @@ body {
 .chat-input {
   display: flex;
   margin-top: 10px;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .chat-input input[type="text"] {
@@ -27,9 +30,6 @@ body {
 .chat-input button {
   padding: 5px 10px;
   display: flex;
-  margin-top: 10px;
-  flex-direction: column;
-  gap: 10px;
 }
 
 /* Estilo para alinhar as mensagens enviadas pelo usuário à direita */
