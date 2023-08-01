@@ -8,15 +8,19 @@ body {
 }
 
 .chat-messages {
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   min-height: 300px;
   padding: 10px;
-  overflow-y: scroll;
+  overflow-y: hide;
+  border-radius: 8px;
 }
 
 .chat-input {
   display: flex;
   margin-top: 10px;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .chat-input input[type="text"] {
@@ -26,28 +30,21 @@ body {
 
 .chat-input button {
   padding: 5px 10px;
-  margin-right: 5px;
+  display: flex;
 }
 
 /* Estilo para alinhar as mensagens enviadas pelo usuário à direita */
 .user-message {
   text-align: right;
   background-color: #E3F2FD;
+  border-radius: 8px 8px 0 8px;
+  padding: 5px 5px;
 }
 
 /* Estilo para alinhar as mensagens de outros usuários à esquerda */
 .other-message {
   text-align: left;
   background-color: #FFF;
-}
-
-/* Estilo para o botão de limpar chat */
-#clear-button {
-  padding: 5px 10px;
-  background-color: #FFCCCC;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Estilo para o popup */
@@ -65,4 +62,35 @@ body {
 
 .popup.active {
   display: block;
+}
+
+
+.chat-input button {
+  padding: 7px 10px;
+  margin-right: 5px;
+  border: none;
+  background: #008000c4;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+/* Estilo para o botão de limpar chat */
+#clear-button {
+  padding: 5px 10px;
+  background-color: #f16868;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-input input {
+  padding: 15px;
+}
+
+input {
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid black;
+  padding: 5px;
 }
