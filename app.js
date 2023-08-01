@@ -19,8 +19,6 @@ const nameInput = document.getElementById('name-input');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatMessages = document.getElementById('chat-messages');
-
-// Referência ao popup
 const popup = document.getElementById('popup');
 
 // Função para exibir o popup
@@ -48,6 +46,7 @@ function sendMessage() {
         showPopup('Por favor, informe seu nome e digite uma mensagem antes de enviar.');
     }
 }
+
 // Evento ao clicar no botão enviar
 sendButton.addEventListener('click', sendMessage);
 
@@ -62,6 +61,14 @@ messageInput.addEventListener('keypress', function (e) {
 database.ref('messages').on('child_added', function (snapshot) {
     const messageData = snapshot.val();
     const messageElement = document.createElement('div');
+    
+    // Verifica se a mensagem foi enviada pelo usuário atual
+    if (messageData.name === nameInput.value.trim()) {
+        messageElement.classList.add('user-message'); // Adiciona a classe para alinhar à direita
+    } else {
+        messageElement.classList.add('other-message'); // Adiciona a classe para alinhar à esquerda
+    }
+    
     messageElement.innerHTML = `<strong>${messageData.name}:</strong> ${messageData.message}`;
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
