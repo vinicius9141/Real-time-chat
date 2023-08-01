@@ -32,6 +32,8 @@ body {
 .user-message {
   text-align: right;
   background-color: #E3F2FD;
+  border-radius: 8px 8px 0 8px;
+  padding: 5px 5px;
 }
 
 /* Estilo para alinhar as mensagens de outros usuários à esquerda */
