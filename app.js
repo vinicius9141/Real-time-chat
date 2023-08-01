@@ -20,6 +20,18 @@ const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 const chatMessages = document.getElementById('chat-messages');
 
+// Referência ao popup
+const popup = document.getElementById('popup');
+
+// Função para exibir o popup
+function showPopup(message) {
+    popup.textContent = message;
+    popup.classList.add('active');
+    setTimeout(() => {
+        popup.classList.remove('active');
+    }, 3000); // Exibir o popup por 3 segundos
+}
+
 // Função para enviar mensagem
 function sendMessage() {
     const name = nameInput.value.trim();
@@ -33,7 +45,7 @@ function sendMessage() {
         });
         messageInput.value = '';
     } else {
-        alert('Por favor, informe seu nome e digite uma mensagem antes de enviar.');
+        showPopup('Por favor, informe seu nome e digite uma mensagem antes de enviar.');
     }
 }
 // Evento ao clicar no botão enviar
