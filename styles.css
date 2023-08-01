@@ -26,6 +26,10 @@ body {
 
 .chat-input button {
   padding: 5px 10px;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Estilo para alinhar as mensagens enviadas pelo usuário à direita */
@@ -61,15 +65,31 @@ body {
 
 
 .chat-input button {
-  padding: 5px 10px;
+  padding: 7px 10px;
   margin-right: 5px;
+  border: none;
+  background: #008000c4;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 8px;
 }
 
 /* Estilo para o botão de limpar chat */
 #clear-button {
   padding: 5px 10px;
-  background-color: #FFCCCC;
+  background-color: #f16868;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.chat-input input {
+  padding: 15px;
+}
+
+input {
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid black;
+  padding: 5px;
 }
